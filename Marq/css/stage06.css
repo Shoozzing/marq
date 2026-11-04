@@ -1,0 +1,48 @@
+/* Stage 06 — spreadsheet import styles */
+.stage06-controls,.stage06-toolbar,.stage06-paging,.stage06-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0}
+.stage06-controls .fld{min-width:180px}
+.stage06-header{display:flex;align-items:center;gap:7px;padding:5px 8px;background:var(--p2);border-radius:8px}
+.stage06-sample,.stage06-table-wrap{max-height:52vh;overflow:auto;border:1px solid var(--ln);border-radius:8px;background:var(--p1)}
+.stage06-table{width:100%;min-width:100%;border-collapse:collapse;font-size:12px}
+.stage06-table th,.stage06-table td{padding:7px 9px;border-bottom:1px solid var(--ln);text-align:left;white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis}
+.stage06-table th{position:sticky;top:0;background:var(--p2);z-index:1}
+.stage06-sort{border:0;background:transparent;color:inherit;padding:0;font-weight:700;text-align:left}
+.stage06-toolbar input[type=search],.stage06-toolbar select{padding:7px 9px;background:var(--p2);border:1px solid var(--ln);border-radius:7px;color:var(--tx)}
+.stage06-toolbar input[type=search]{min-width:190px}
+.stage06-summary{margin:8px 0;color:var(--mu);font-size:12px}
+.stage06-excluded{opacity:.55;text-decoration:line-through}
+.stage06-paging{justify-content:space-between}.stage06-paging span{color:var(--mu)}
+.stage06-actions{justify-content:flex-end}
+/* ---- Stage 07A: dynamic data mapping ---- */
+#el-props .hint{white-space:pre-wrap;overflow-wrap:anywhere}#el-props .hint:empty{display:none}
+#el-props .hint.warn{color:#ffb454}
+/* ---- Stage 07B: record navigation ---- */
+.recnav{display:flex;align-items:center;gap:4px}.recnav[hidden],#rec-sep[hidden]{display:none}
+.recnum{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mu);white-space:nowrap}
+.recnum input{width:56px;padding:3px 5px;text-align:center;background:var(--p2);border:1px solid var(--ln);border-radius:6px;color:var(--tx);font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+.recnum input::-webkit-outer-spin-button,.recnum input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+#rec-total{color:var(--tx);font-variant-numeric:tabular-nums}
+/* ---- Stage 08: bulk label generator ---- */
+dialog.gen-wide{width:min(1180px,96vw)}dialog.gen-wide::backdrop{backdrop-filter:none;background:#000c} /* the blur re-rasterises the page on every repaint (~40 ms/frame while navigating labels) */dialog.gen-wide #modal-body{max-height:calc(84vh - 60px)}
+.gen-top{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.gen-top select,.gen-top input[type=search]{padding:7px 9px;background:var(--p2);border:1px solid var(--ln);border-radius:7px;color:var(--tx)}.gen-top input[type=search]{min-width:230px;flex:1}
+.gen-progress{display:flex;align-items:center;gap:10px}.gen-progress progress{flex:1;height:8px;accent-color:var(--acc)}
+.gen-stats{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0;font-size:12.5px;color:var(--mu)}.gen-stat b{color:var(--tx);font-variant-numeric:tabular-nums}.gen-stat.ok b{color:var(--acc)}.gen-stat.warn b{color:#ffb454}.gen-stat.bad b{color:#ff6b6b}
+.gen-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);gap:14px;margin-top:8px}@media(max-width:900px){.gen-grid{grid-template-columns:1fr}}
+.gen-listwrap{max-height:46vh}.gen-table tr{cursor:pointer}.gen-table tr.on td{background:var(--p3)}
+.gen-st{text-align:center;font-weight:700}.gen-st.st1,.gen-line.st1{color:var(--acc)}.gen-st.st2,.gen-line.st2{color:#ffb454}.gen-st.st3,.gen-line.st3{color:#ff6b6b}
+.gen-stage{display:flex;align-items:center;justify-content:center;height:34vh;min-height:200px;background:#d9dce1;border:1px solid var(--ln);border-radius:8px;overflow:hidden}.gen-stage canvas{background:#fff;box-shadow:0 4px 14px #0004}
+.gen-right .recnav{justify-content:center;margin:10px 0}.gen-infobox{font-size:12px}.gen-infobox .hint{margin-top:4px;white-space:normal}
+#gen-notes .hint{margin:4px 2px;font-size:12px;color:#ffb454}
+/* ---- Stage 09: print configuration ---- */
+dialog.print-wide{width:min(1180px,96vw)}dialog.print-wide::backdrop{backdrop-filter:none;background:#000c}dialog.print-wide #modal-body{max-height:calc(84vh - 60px);padding:14px}
+.print-grid{display:grid;grid-template-columns:minmax(280px,340px) minmax(0,1fr);gap:14px;align-items:stretch}@media(max-width:900px){.print-grid{grid-template-columns:1fr}}
+.print-form{display:flex;flex-direction:column;gap:10px;max-height:calc(84vh - 88px);overflow:auto;padding-right:4px}
+.print-sec{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--ln)}
+.print-sec h4{grid-column:1/-1;margin:0 0 2px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.print-right{display:flex;flex-direction:column;min-width:0;gap:8px}
+.print-stage{display:flex;align-items:center;justify-content:center;flex:1;min-height:360px;height:56vh;background:#c9cdd4;border:1px solid var(--ln);border-radius:8px;overflow:hidden}
+.print-stage canvas{background:#fff;box-shadow:0 8px 24px #0005}
+.print-nav{display:flex;align-items:center;justify-content:center;gap:10px}
+.print-meta{font-size:12px;color:var(--mu);font-variant-numeric:tabular-nums;white-space:normal}
+.print-right .hint.warn{color:#ffb454}#pc-warn:empty{display:none}

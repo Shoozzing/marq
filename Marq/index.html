@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Marq — Label Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/stage06.css">
+</head>
+<body>
+<div id="app">
+<header id="topbar">
+  <div class="brand"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" rx="6" fill="var(--acc)"/><path d="M5 5v12M8.5 5v12M12 5v8M15.5 5v12M17 5v0" stroke="#10120f" stroke-width="2"/></svg><b>Marq</b></div>
+  <input id="project-name" type="text" aria-label="Project name" spellcheck="false">
+  <nav class="tools">
+    <div class="grp"><button class="tb" id="btn-new"><i>＋</i>New</button><button class="tb" id="btn-open"><i>▤</i>Open</button><button class="tb" id="btn-save"><i>▾</i>Save</button></div>
+    <div class="grp"><button class="tb ico" id="btn-undo" title="Undo (Ctrl+Z)">↶</button><button class="tb ico" id="btn-redo" title="Redo (Ctrl+Y)">↷</button></div>
+    <div class="grp"><button class="tb" id="btn-excel"><i>▦</i>Import Excel</button><button class="tb" id="btn-data"><i>≣</i>Data Preview</button><button class="tb" id="btn-generate"><i>⚙</i>Generate Labels</button></div>
+    <div class="grp"><button class="tb" id="btn-pprev"><i>◫</i>Print Preview</button><button class="tb pri" id="btn-print"><i>⎙</i>Print</button></div>
+  </nav>
+  <input type="file" id="file-open" accept=".json" hidden><input type="file" id="file-image" accept="image/png,image/jpeg,image/gif,image/webp,image/bmp,image/svg+xml" hidden><input type="file" id="file-excel" accept=".xlsx,.xls,.csv,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
+</header>
+<div id="body">
+  <aside id="rail" aria-label="Tools"></aside>
+  <section id="flyout"><h2 id="fly-title"></h2><div id="fly-body"></div></section>
+  <main id="center">
+    <div id="stage"><div id="corner" title="Ruler unit"></div><canvas id="ruler-h"></canvas><canvas id="ruler-v"></canvas><div id="canvas-wrap"><canvas id="editor-canvas"></canvas></div></div>
+    <div id="dock"><div id="rec-nav" class="recnav" role="group" aria-label="Record preview" hidden><button class="chip ico" id="rec-prev" title="Previous record (Alt+←)" aria-label="Previous record">◀</button><label class="recnum">Record <input id="rec-num" type="number" min="1" step="1" inputmode="numeric" aria-label="Current record number"> of <span id="rec-total">0</span></label><button class="chip ico" id="rec-next" title="Next record (Alt+→)" aria-label="Next record">▶</button></div><span class="sep" id="rec-sep" hidden></span><button class="chip" id="btn-grid" aria-pressed="true" title="Show grid">▦ Grid</button><button class="chip" id="btn-rulers" aria-pressed="true" title="Show rulers">⟷ Rulers</button><span class="sep"></span><button class="chip ico" id="btn-zoom-out" title="Zoom out (Ctrl −)">−</button><span id="zoom-label"></span><button class="chip ico" id="btn-zoom-in" title="Zoom in (Ctrl +)">+</button><button class="chip" id="btn-zoom-100" title="Actual size, 100% (Ctrl 1)">100%</button><button class="chip" id="btn-fit" title="Fit to screen (Ctrl 0)">Fit</button></div>
+  </main>
+  <aside id="props" aria-label="Properties"></aside>
+</div>
+<footer id="status"><span id="st-size"></span><span id="st-cursor"></span><span id="st-sheet"></span><span id="st-libs"></span><span id="st-saved"></span><span id="status-msg"></span></footer>
+</div>
+<dialog id="modal"><header><h3 id="modal-title"></h3><button class="chip ico" id="modal-x" aria-label="Close">✕</button></header><div id="modal-body"></div></dialog>
+<div id="print-root" hidden></div>
+<script src="vendor/xlsx.full.min.js"></script>
+<script src="js/core/EventBus.js"></script>
+<script src="js/core/Units.js"></script>
+<script src="js/core/Store.js"></script>
+<script src="js/canvas/LabelSpec.js"></script>
+<script src="js/elements/ElementSpec.js"></script>
+<script src="js/model/Model.js"></script>
+<script src="js/canvas/Viewport.js"></script>
+<script src="js/canvas/Rulers.js"></script>
+<script src="js/render/LabelRenderer.js"></script>
+<script src="js/render/TextLayout.js"></script>
+<script src="js/render/ImageCache.js"></script>
+<script src="js/render/ElementDrawers.js"></script>
+<script src="js/barcode/LinearEncoder.js"></script>
+<script src="js/barcode/QrEncoder.js"></script>
+<script src="js/barcode/BarcodeRegistry.js"></script>
+<script src="js/barcode/JsBarcodeAdapter.js"></script>
+<script src="js/barcode/QrAdapter.js"></script>
+<script src="js/render/BarcodeDrawers.js"></script>
+<script src="js/data/DataModel.js"></script>
+<script src="js/generate/Generator.js"></script>
+<script src="js/print/PrintPlanner.js"></script>
+<script src="js/print/PrintConfig.js"></script>
+<script src="js/storage/ProjectStorage.js"></script>
+<script src="js/elements/Elements.js"></script>
+<script src="js/canvas/CanvasView.js"></script>
+<script src="js/ui/ElementPanel.js"></script>
+<script src="js/ui/Shell.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
